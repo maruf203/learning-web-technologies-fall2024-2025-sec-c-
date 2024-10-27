@@ -1,0 +1,51 @@
+<patients>
+   
+        <patientdetails>
+        <sl> 23
+        </sl>
+        <name> John Carter
+        </name>
+        <admissiondate>
+             <date> 25
+             </date>
+             <month>12
+             </month>
+             <year>2015
+             </year>
+             </admissiondate>
+             </patientdetails>
+
+
+        <patientdetails>
+        <sl> 29
+        </sl>
+        <name> Bob Marshal
+        </name>
+        <admissiondate>
+             <date> 13
+             </date>
+             <month>01
+             </month>
+             <year>1999
+             </year>
+             </admissiondate>
+             </patientdetails>
+
+
+             <patientdetails>
+        <sl> 35
+        </sl>
+        <name> Clark Kent
+        </name>
+        <admissiondate>
+             <date> 17
+             </date>
+             <month>06
+             </month>
+             <year>2005
+             </year>
+             </admissiondate>
+             </patientdetails>
+
+ </patients>
+      
