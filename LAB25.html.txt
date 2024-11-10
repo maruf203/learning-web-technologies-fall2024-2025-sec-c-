@@ -1,0 +1,27 @@
+<html>
+    <head>
+
+    ‹title>Table 1</title>
+
+    </head> <body>
+    <h1></h1>
+
+    <table border="1" align="center" width="100x">
+    <tr>
+    
+    <td>colspan= "3"> center>First HTML Sites/center></td>
+    </tr>
+
+    <tr>
+                 
+        <td><h2>LINKS</h2></td><br> <a href="page-1.html">page-1</a> <br>
+             
+
+    </tr>
+
+
+    </tr>
+  
+    </tr>
+    </ table>
+    DOUY
