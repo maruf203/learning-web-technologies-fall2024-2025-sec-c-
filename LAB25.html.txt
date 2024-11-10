@@ -1,20 +1,24 @@
 <html>
     <head>
 
-    ‹title>Table 1</title>
+    <title>Table 1</title>
 
-    </head> <body>
-    <h1></h1>
+    </head>
+     <body>
+           
+        <h1></h1>
 
     <table border="1" align="center" width="100x">
-    <tr>
+       <tr>
     
-    <td>colspan= "3"> center>First HTML Sites/center></td>
+    <td colspan= "3"> <center> First HTML Sites </center></td>
     </tr>
 
-    <tr>
+        <tr>
                  
-        <td><h2>LINKS</h2></td><br> <a href="page-1.html">page-1</a> <br>
+        <td><h2>LINKS</h2></td><br> <a href="page-1.html">page-1</a> <br><a href="page-2.html">page-2</a></td>
+        td><h2>page -1</h2></td><br> I am at page 1 </td>
+        <td><h3>External Links </h3><br><a href=""https://www.microsoft.com/">microsoft</a><br> <a href=https://www.google.com/"
              
 
     </tr>
@@ -23,5 +27,4 @@
     </tr>
   
     </tr>
-    </ table>
-    
+    </table>
