@@ -1,28 +1,37 @@
-<?php 
-    $email = $_REQUEST['email'];
-    
-    if($email ==""){
-        echo "null value. input a valid email";
+<?php
+   
+    $name =  $_REQUEST['name'];
+
+    if($name == ""){
+        echo "null value. input a valid name";
+
     }
-    else{
-        echo "your email is: ".$email;
-    }
-?>
+       else {
+        echo " Your Name is: " .$name;
+       }
 
 
-
-<html>
+       
+   ?>
+   
+   
+   <html>
+       
+         <head>
+            <title> Name </title>
     <head>
-        <title>Email</title>
-    </head>
-    <body>  
-        <form action="Email.php" method="post" enctype="">
-            <fieldset>
-                <legend>Email</legend>
-                <input type="email" name="email" value="" placeholder="sample@example.com" required/><br>
-                <input type="submit" name="submit" value="Submit"/>
-            </fieldset>
-        </form>
-</body>
+    
+    <body>
 
-</html>
+       <form action ="Name.php" method = "post" enctype = "">
+          
+            <fieldset>
+         
+                  <legend> name </legend>
+                  <input type = "text" name= "name" value = "" required/><br>
+                  <input type = "submit" name= "submit" value = "submit" />
+            </fieldset>
+
+        </form>
+    </body>
+</html>  
