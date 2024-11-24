@@ -1,57 +1,58 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-</head>
-<body>
-    <h2>Registration Form</h2>
-    <form action="register.php" method="POST">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-        
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <input type="submit" value="Register">
-    </form>
-    <p>Already have an account? <a href="login.html">Login here</a></p>
-</body>
-</html>
 <?php
-$servername = "localhost";
-$username = "root";  // replace with your database username
-$password = "";  // replace with your database password
-$dbname = "registration_db";  // replace with your database name
+session_start();
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = $_POST['username'];
-    $email = $_POST['email'];
-    $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);  // Hash the password for security
+    $errors = [];
 
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$user', '$email', '$pass')";
+    // Validate input fields
+    if (empty($_POST["Name"])) {
+        $errors[] = "Name is required.";
+    }
+    if (empty($_POST["Email"])) {
+        $errors[] = "Email is required.";
+    }
+    if (empty($_POST["Password"])) {
+        $errors[] = "Password is required.";
+    }
 
-    if ($conn->query($sql) === TRUE) {
-        // Redirect to the login page after successful registration
-        header("Location: login.html");
-        exit;
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+    // Save to session if no errors
+    if (empty($errors)) {
+        $_SESSION["user"] = [
+            "Name" => $_POST["Name"],
+            "Email" => $_POST["Email"],
+            "Password" => $_POST["Password"],
+        ];
+        header("Location: login.php");
+        exit();
     }
 }
-
-$conn->close();
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <?php if (!empty($errors)): ?>
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li><?php echo htmlspecialchars($error); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+    <form method="POST" action="">
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name"><br><br>
+
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email"><br><br>
+
+        <label for="Password">Password:</label>
+        <input type="password" id="Password" name="Password"><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
