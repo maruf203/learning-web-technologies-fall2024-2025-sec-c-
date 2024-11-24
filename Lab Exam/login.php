@@ -1,61 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-</head>
-<body>
-    <h2>Login Form</h2>
-    <form action="login.php" method="POST">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-        
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <input type="submit" value="Login">
-    </form>
-</body>
-</html>
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";  // replace with your database username
-$password = "";  // replace with your database password
-$dbname = "registration_db";  // replace with your database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Redirect to welcome page if already logged in
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("Location: welcome.php");
+    exit();
 }
 
+// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
+    $errors = [];
 
-    $sql = "SELECT * FROM users WHERE username='$user'";
-    $result = $conn->query($sql);
+    // Validate input fields
+    if (empty($_POST["Email"])) {
+        $errors[] = "Email is required.";
+    }
+    if (empty($_POST["Password"])) {
+        $errors[] = "Password is required.";
+    }
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        
-        if (password_verify($pass, $row['password'])) {
-            $_SESSION['username'] = $user;
-            // Redirect to a protected page
+    // Check credentials
+    if (empty($errors)) {
+        $storedUser = $_SESSION["user"] ?? null;
+        if ($storedUser && $storedUser["Email"] === $_POST["Email"] && $storedUser["Password"] === $_POST["Password"]) {
+            $_SESSION["loggedin"] = true;
             header("Location: welcome.php");
-            exit;
+            exit();
         } else {
-            echo "Invalid password.";
+            $errors[] = "Invalid email or password.";
         }
-    } else {
-        echo "No user found with that username.";
     }
 }
-
-$conn->close();
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <?php if (!empty($errors)): ?>
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li><?php echo htmlspecialchars($error); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+    <form method="POST" action="">
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email"><br><br>
+
+        <label for="Password">Password:</label>
+        <input type="password" id="Password" name="Password"><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
