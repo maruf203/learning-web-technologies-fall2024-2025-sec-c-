@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Registration Page</title>
+</head>
+<body>
+    <table align="center" height="auto" width="30%">
+        <tr>
+            <td>
+                <form action="../controller/reg_check.php" method="post">
+                    <fieldset>
+                        <legend align="center"><h2>Registration</h2></legend>
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <label for="id">ID:</label><br>
+                                    <input type="text" id="id" name="id" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="password">Password:</label><br>
+                                    <input type="password" id="password" name="password" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="confirm_password">Confirm Password:</label><br>
+                                    <input type="password" id="confirm_password" name="confirm_password" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="name">Name:</label><br>
+                                    <input type="text" id="name" name="name" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="email">Email:</label><br>
+                                    <input type="email" id="email" name="email" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <hr>
+                                    <input type="submit" name="signup" value="Sign Up">
+                                    <input type="reset" name="reset" value="Reset">
+                                    <br><br>
+                                    <a href="login.html">Sign In</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
