@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Employee</title>
+</head>
+<body>
+    <input type="text" id="search" placeholder="Search Employee">
+    <button onclick="searchEmployee()">Search</button>
+    <div id="result"></div>
+
+    <script>
+        function searchEmployee() {
+            var search = document.getElementById("search").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "search.php?query=" + search, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("result").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
