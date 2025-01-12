@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Update Employee</title>
+</head>
+<body>
+    <form id="updateForm" action="update.php" method="POST" onsubmit="return validateForm()">
+        <input type="hidden" name="id" id="employeeId">
+        <input type="text" name="name" id="name" placeholder="Name" required>
+        <input type="text" name="contact_no" id="contact_no" placeholder="Contact No" required>
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <button type="submit">Update</button>
+    </form>
+    <script src="validation.js"></script>
+</body>
+</html>
